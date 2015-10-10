@@ -8,4 +8,6 @@ description 'Usage: include sts'
 project_page 'https://github.com/jurgenlust/puppet-sts'
 
 ## Add dependencies, if any:
-# dependency 'username/name', '>= 1.2.0'
+dependency 'puppetlabs/stdlib', '>=2.7.20 <5.0.0'
+dependency 'gini/archive', '>=0.2.1'
+dependency 'maestrodev/wget', '>=1.7.1'

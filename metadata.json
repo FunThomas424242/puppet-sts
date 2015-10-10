@@ -1,6 +1,10 @@
 {
   "author": "jlust",
-  "dependencies": [],
+  "dependencies": [
+  	{ "name": "puppetlabs/stdlib", "version_requirement": ">=2.7.20 <5.0.0" },
+  	{ "name": "gini/archive", "version_requirement": ">=0.2.1" },
+  	{ "name": "maestrodev/wget", "version_requirement": ">=1.7.1" }
+  ],
   "description": "UNKNOWN",
   "license": "unknow",
   "name": "jlust-sts",

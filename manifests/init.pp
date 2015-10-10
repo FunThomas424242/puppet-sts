@@ -4,8 +4,8 @@
 #
 class sts {
   $sts_version = '3.7.1'
-  $eclipse_release = '4.4'
-  $eclipse_version = "${eclipse_release}.2"
+  $eclipse_release = '4.5'
+  $eclipse_version = "${eclipse_release}.1"
   $sts_tarball = "/tmp/sts-${sts_version}.tar.gz"
   $flavor = $::architecture ? {
     'amd64' => '-x86_64',
@@ -13,9 +13,53 @@ class sts {
   }
   $sts_install = '/opt'
   $sts_home = "${sts_install}/springsource/sts-${sts_version}.RELEASE"
-  $sts_url = "http://download.springsource.com/release/STS/${sts_version}/dist/e${eclipse_release}/springsource-tool-suite-${sts_version}.RELEASE-e${eclipse_version}-linux-gtk${flavor}.tar.gz"
+  $sts_url = "http://dist.springsource.com/release/STS/${sts_version}.RELEASE/dist/e${eclipse_release}/spring-tool-suite-${sts_version}.RELEASE-e${eclipse_version}-linux-gtk${flavor}.tar.gz"
   $sts_symlink = "${sts_install}/sts"
   $sts_executable = "${sts_symlink}/STS"
+
+### system programs
+
+Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
+
+class grundsystem::params {
+  case $::osfamily {
+    "Debian": {
+      case $::lsbdistcodename {
+        "wheezy": {
+        }
+        "trusty": {
+        }
+      default: { fail("unsupported release ${::lsbdistcodename}") }
+      }
+    }
+    default: { fail("unsupported platform ${::osfamily}") }
+  }
+}
+
+class systemupdate {
+
+  exec { 'apt-get update':
+    command => 'apt-get update -y',
+  }
+
+  $sysPackages = [ "build-essential" ]
+  package { $sysPackages:
+    ensure => "latest",
+    require => Exec['apt-get update'],
+  }
+  
+  $libsToInstall = ["wget","tar","gzip","zip"]
+  package { $libsToInstall:
+    ensure => "latest",
+    require => Exec['apt-get update']
+  }
+}
+
+include systemupdate
+
+## logic
+
+
 
   exec { 'download-sts':
     command => "/usr/bin/wget -O ${sts_tarball} ${sts_url}",
