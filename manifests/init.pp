@@ -12,7 +12,7 @@ class sts {
     default => ''
   }
   $sts_install = '/opt'
-  $sts_home = "${sts_install}/springsource/sts-${sts_version}.RELEASE"
+  $sts_home = "${sts_install}/sts-bundle/sts-${sts_version}.RELEASE"
   $sts_url = "http://dist.springsource.com/release/STS/${sts_version}.RELEASE/dist/e${eclipse_release}/spring-tool-suite-${sts_version}.RELEASE-e${eclipse_version}-linux-gtk${flavor}.tar.gz"
   $sts_symlink = "${sts_install}/sts"
   $sts_executable = "${sts_symlink}/STS"
