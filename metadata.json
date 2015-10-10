@@ -1,12 +1,14 @@
 {
   "author": "jlust",
   "dependencies": [],
+  "description": "UNKNOWN",
   "license": "unknow",
   "name": "jlust-sts",
+  "operatingsystem_support": [],
   "project_page": "https://github.com/jurgenlust/puppet-sts",
   "requirements": [],
   "source": "https://github.com/jurgenlust/puppet-sts.git",
   "summary": "Puppet module for installing the SpringSource Tool Suite",
-  "tags": ["linux", "spring-sts"],
+  "tags": ["ubuntu", "sts"],
   "version": "0.1.0"
 }
