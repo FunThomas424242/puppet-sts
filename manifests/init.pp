@@ -19,15 +19,15 @@ class sts {
 
 ### system programs
 
-Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
+Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
 
 class grundsystem::params {
   case $::osfamily {
-    "Debian": {
+    'Debian': {
       case $::lsbdistcodename {
-        "wheezy": {
+        'wheezy': {
         }
-        "trusty": {
+        'trusty': {
         }
       default: { fail("unsupported release ${::lsbdistcodename}") }
       }
@@ -42,15 +42,15 @@ class systemupdate {
     command => 'apt-get update -y',
   }
 
-  $sysPackages = [ "build-essential" ]
+  $sysPackages = [ 'build-essential' ]
   package { $sysPackages:
-    ensure => "latest",
+    ensure  => 'latest',
     require => Exec['apt-get update'],
   }
   
-  $libsToInstall = ["wget","tar","gzip","zip"]
+  $libsToInstall = ['wget','tar','gzip','zip']
   package { $libsToInstall:
-    ensure => "latest",
+    ensure  => 'latest',
     require => Exec['apt-get update']
   }
 }
