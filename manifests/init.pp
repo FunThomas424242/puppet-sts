@@ -17,6 +17,18 @@ class sts {
   $sts_symlink = sts::params::pSymlink
   $sts_executable = sts::params::pExecutable
 
+
+  notice("sts_version: ${sts_version}")
+  notice("eclipse_release: ${eclipse_release}")
+  notice("eclipse_version: ${eclipse_version}")
+  notice("sts_tarball: ${sts_tarball}")
+  notice("flavor: ${flavor}")
+  notice("sts_install: ${sts_install}")
+  notice("sts_home: ${sts_home}")
+  notice("sts_url: ${sts_url}")
+  notice("sts_symlink: ${sts_symlink}")
+  notice("sts_executable: ${sts_executable}")
+
   include systemupdate
 
   exec { 'download-sts':
