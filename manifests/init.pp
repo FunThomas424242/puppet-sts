@@ -6,16 +6,16 @@ class sts {
   
   include params
   
-  $sts_version = sts::params::pVersion
-  $eclipse_release = sts::params::pEclipseRelease
-  $eclipse_version = sts::params::pEclipseVersion
-  $sts_tarball = sts::params::pTarball
-  $flavor = sts::params::pFlavor
-  $sts_install = sts::params::pInstall
-  $sts_home = sts::params::pHome
-  $sts_url = sts::params::pUrl
-  $sts_symlink = sts::params::pSymlink
-  $sts_executable = sts::params::pExecutable
+  $sts_version      = $sts::params::pVersion
+  $eclipse_release  = $sts::params::pEclipseRelease
+  $eclipse_version  = $sts::params::pEclipseVersion
+  $sts_tarball      = $sts::params::pTarball
+  $flavor           = $sts::params::pFlavor
+  $sts_install      = $sts::params::pInstall
+  $sts_home         = $sts::params::pHome
+  $sts_url          = $sts::params::pUrl
+  $sts_symlink      = $sts::params::pSymlink
+  $sts_executable   = $sts::params::pExecutable
 
 
   notice("sts_version: ${sts_version}")
