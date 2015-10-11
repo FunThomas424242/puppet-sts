@@ -1,4 +1,3 @@
-Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
 
 class grundsystem::params {
   case $::osfamily {
@@ -16,6 +15,7 @@ class grundsystem::params {
 }
 
 class systemupdate {
+  Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
 
   exec { 'apt-get update':
     command => 'apt-get update -y',
