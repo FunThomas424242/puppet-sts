@@ -11,8 +11,8 @@ class sts::params (
     default => ''
   },
   $pInstall    = '/opt',
- )
- {
+  )
+  {
     $pTarball = "/tmp/sts-${pVersion}.tar.gz"
     $pUrl = "http://dist.springsource.com/release/STS/${pVersion}.RELEASE/dist/e${pEclipseRelease}/spring-tool-suite-${pVersion}.RELEASE-e${pEclipseVersion}-linux-gtk${pFlavor}.tar.gz"
     $pHome = "${pInstall}/sts-bundle/sts-${pVersion}.RELEASE"
