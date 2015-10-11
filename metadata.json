@@ -14,5 +14,5 @@
   "source": "https://github.com/funthomas424242/puppet-sts.git",
   "summary": "Puppet module for installing the SpringSource Tool Suite",
   "tags": ["ubuntu", "sts"],
-  "version": "0.1.2"
+  "version": "0.1.3"
 }

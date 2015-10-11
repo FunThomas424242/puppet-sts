@@ -1,6 +1,6 @@
-# Class: sts::params
+
 #
-# Klasse zur Vorbelegung der Parameter für das sts Modul
+# Class: sts::params
 #
 class sts::params (
   $pVersion        = '3.7.1',

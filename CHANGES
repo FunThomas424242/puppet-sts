@@ -1,5 +1,13 @@
 ## Change Historie
 
+# v0.1.3
+
+ * bugfix illegal sequence
+
+# v0.1.2
+
+ * Ausgabe der Variablen eingefügt
+
 # v0.1.1
  
  * parameter ausgelagert

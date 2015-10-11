@@ -1,4 +1,7 @@
 
+#
+# Class: grundsystem::params
+#
 class grundsystem::params {
   case $::osfamily {
     'Debian': {

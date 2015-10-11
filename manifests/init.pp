@@ -1,3 +1,5 @@
+
+#
 # Class: sts
 #
 # This module manages SpringSource Tool Suite
@@ -61,7 +63,7 @@ class sts {
     require => File[$sts_home],
   }
 
-  file { '/usr/share/icons/sts.xpm':
+  file { '/usr/share/icons/sts.xpm' :
     ensure  => link,
     target  => "${sts_home}/icon.xpm",
     require => File[$sts_home],

@@ -1,5 +1,5 @@
 name    'funthomas424242-sts'
-version '0.1.2'
+version '0.1.3'
 source 'https://github.com/funthomas424242/puppet-sts.git'
 author 'FunThomas424242 (Thomas Schubert)'
 license 'unknow'
