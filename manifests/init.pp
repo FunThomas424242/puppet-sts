@@ -3,63 +3,21 @@
 # This module manages SpringSource Tool Suite
 #
 class sts {
-  $sts_version = '3.7.1'
-  $eclipse_release = '4.5'
-  $eclipse_version = "${eclipse_release}.1"
-  $sts_tarball = "/tmp/sts-${sts_version}.tar.gz"
-  $flavor = $::architecture ? {
-    'amd64' => '-x86_64',
-    default => ''
-  }
-  $sts_install = '/opt'
-  $sts_home = "${sts_install}/sts-bundle/sts-${sts_version}.RELEASE"
-  $sts_url = "http://dist.springsource.com/release/STS/${sts_version}.RELEASE/dist/e${eclipse_release}/spring-tool-suite-${sts_version}.RELEASE-e${eclipse_version}-linux-gtk${flavor}.tar.gz"
-  $sts_symlink = "${sts_install}/sts"
-  $sts_executable = "${sts_symlink}/STS"
-
-### system programs
-
-Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
-
-class grundsystem::params {
-  case $::osfamily {
-    'Debian': {
-      case $::lsbdistcodename {
-        'wheezy': {
-        }
-        'trusty': {
-        }
-      default: { fail("unsupported release ${::lsbdistcodename}") }
-      }
-    }
-    default: { fail("unsupported platform ${::osfamily}") }
-  }
-}
-
-class systemupdate {
-
-  exec { 'apt-get update':
-    command => 'apt-get update -y',
-  }
-
-  $sysPackages = [ 'build-essential' ]
-  package { $sysPackages:
-    ensure  => 'latest',
-    require => Exec['apt-get update'],
-  }
   
-  $libsToInstall = ['wget','tar','gzip','zip']
-  package { $libsToInstall:
-    ensure  => 'latest',
-    require => Exec['apt-get update']
-  }
-}
+  include params
+  
+  $sts_version = sts::params::pVersion
+  $eclipse_release = sts::params::pEclipseRelease
+  $eclipse_version = sts::params::pEclipseVersion
+  $sts_tarball = sts::params::pTarball
+  $flavor = sts::params::pFlavor
+  $sts_install = sts::params::pInstall
+  $sts_home = sts::params::pHome
+  $sts_url = sts::params::pUrl
+  $sts_symlink = sts::params::pSymlink
+  $sts_executable = sts::params::pExecutable
 
-include systemupdate
-
-## logic
-
-
+  include systemupdate
 
   exec { 'download-sts':
     command => "/usr/bin/wget -O ${sts_tarball} ${sts_url}",
@@ -101,6 +59,5 @@ include systemupdate
     require => File[$sts_symlink],
     content => template('sts/sts.desktop.erb'),
   }
-
-
+  
 }
